@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backend
+    release: {{ .Release.Name }}
+  name: {{ .Release.Name }}-backend
+spec:
+  replicas: {{ .Values.backEnd.replicaCount}}
+  selector:
+    matchLabels:
+      app: backend
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: backend
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - image: public.ecr.aws/qa-wfl/qa-wfl/qakf/sbe:{{ .Values.backEnd.version }}
+        name: sbe
+        ports:
+        - containerPort: {{ .Values.backEnd.port }}

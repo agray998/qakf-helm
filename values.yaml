@@ -1,0 +1,10 @@
+frontEnd:
+  replicaCount: 1
+  version: v1
+  colour: "blue"
+  port: 8080
+
+backEnd:
+  replicaCount: 3
+  version: v1
+  port: 8080
